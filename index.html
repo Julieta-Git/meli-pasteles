@@ -10,6 +10,20 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
 
+<!-- Ícono de la pestaña del navegador (generado a partir de img/logo.png) -->
+<link rel="icon" href="img/logo-mp-sinfondo.png" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+
+<!-- Vista previa al compartir el link por WhatsApp / Instagram / Facebook -->
+<meta property="og:title" content="Meli Pasteles | Tortas artesanales y personalizadas">
+<meta property="og:description" content="Tortas artesanales y personalizadas de Meli Pasteles. Mirá el catálogo, armá tu torta y consultá por WhatsApp.">
+<meta property="og:image" content="img/meli-pasteles-banner.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="img/meli-pasteles-banner.png">
+
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,9 +33,7 @@
 ============================================ -->
 <header class="header">
   <a href="#inicio" class="logo-container">
-    <span class="logo-placeholder" id="logoPlaceholder">MP</span>
-    <!-- Cuando exista un logo real, reemplazar el span de arriba por:
-         <img src="img/logo.png" alt="Meli Pasteles" class="logo-img"> -->
+    <img src="img/logo-mp-sinfondo.png" alt="Meli Pasteles" class="logo-img">
     <span class="logo-text">
       <strong>Meli Pasteles</strong>
       <small>Tortas hechas con amor</small>
@@ -152,6 +164,16 @@
       <div class="form-group">
         <label for="decoracion">Decoración</label>
         <select id="decoracion"></select>
+      </div>
+
+      <div class="form-group addon-group">
+        <label class="checkbox-option" for="cupcakesAddon">
+          <input type="checkbox" id="cupcakesAddon">
+          <span>
+            <strong>Sumar 12 cupcakes a juego</strong>
+            <small id="cupcakesAddonPrice"></small>
+          </span>
+        </label>
       </div>
 
       <div class="price-box">

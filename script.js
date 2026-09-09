@@ -15,13 +15,17 @@
 
 const WHATSAPP_NUMBER = "543704415774";
 
+/* Extra: torta + 12 cupcakes a juego.
+   TODO (Meli): confirmar el valor real y reemplazar acá. */
+const CUPCAKES_ADDON_PRICE = 10000;
+
 /* ---------------------------------------------------------
    DATOS: PRODUCTOS DEL CATÁLOGO
 --------------------------------------------------------- */
 const PRODUCTS = [
   {
     id: "redonda",
-    category: "redonda",
+    category: "redondas",
     name: "Torta redonda",
     tag: "Más elegida",
     shortDescription: "Nuestra clásica torta redonda, ideal para cumpleaños y celebraciones.",
@@ -31,7 +35,7 @@ const PRODUCTS = [
     priceFrom: 23000,
     priceLabel: "Desde $23.000",
     priceIsEstimate: false,
-    thumbnail: "img/disenos/redonda-1.png",
+    thumbnail: "img/tortas-redondas",
     detailRows: [
       ["Bizcochuelo", "Vainilla o chocolate (chocolate: pedir con 2 días de anticipación)"],
       ["Relleno", "A elección — dulce de leche, chantilly, mousse y más"],
@@ -53,7 +57,7 @@ const PRODUCTS = [
     priceFrom: 25000,
     priceLabel: "Desde $25.000",
     priceIsEstimate: false,
-    thumbnail: "img/disenos/corazon-1.png",
+    thumbnail: "img/tortas-corazon",
     detailRows: [
       ["Bizcochuelo", "Vainilla o chocolate (chocolate: pedir con 2 días de anticipación)"],
       ["Relleno", "Los mismos disponibles para la torta redonda"],
@@ -64,8 +68,30 @@ const PRODUCTS = [
     whatsappMessage: "Hola Meli! Quería consultar por una torta corazón de 18 cm aproximadamente, 1,2 kg y 20 porciones."
   },
   {
+    id: "rectangular",
+    category: "rectangulares",
+    name: "Torta rectangular",
+    tag: "Nuevo",
+    shortDescription: "Ideal para mesas dulces y para compartir en cantidad.",
+    /* TODO (Meli): reemplazar por la medida, el peso y las porciones reales. */
+    diameter: "Medida a confirmar",
+    weight: "Peso a confirmar",
+    servings: "Porciones a confirmar",
+    priceFrom: null,
+    priceLabel: "Consultar",
+    priceIsEstimate: false,
+    thumbnail: "C:\meli-pasteles\meli-pasteles\img\tortas-rectangulares\torta-rectangular1.jpeg",
+    detailRows: [
+      ["Bizcochuelo", "Vainilla o chocolate (chocolate: pedir con 2 días de anticipación)"],
+      ["Relleno", "A elección — mismas opciones que las tortas redondas"],
+      ["Cobertura", "Chantilly (no trabajamos con fondant)"],
+      ["Precio", "A confirmar según medida y porciones"]
+    ],
+    whatsappMessage: "Hola Meli! Quería consultar por una torta rectangular."
+  },
+  {
     id: "tematica",
-    category: "tematica",
+    category: "tematicas",
     name: "Tortas temáticas",
     tag: "Personalizable",
     shortDescription: "Elegí una temática, colores y decoración para crear una torta única.",
@@ -75,7 +101,7 @@ const PRODUCTS = [
     priceFrom: 23000,
     priceLabel: "Precio estimado desde $23.000",
     priceIsEstimate: true,
-    thumbnail: "img/disenos/tematica-1.png",
+    thumbnail: "img/tortas-tematicas/tematica-1.png",
     detailRows: [
       ["Decoración", "Toppers, colores y diseño según la temática elegida"],
       ["Imágenes impresas", "+$5.000 (papel fotográfico)"],
@@ -86,7 +112,7 @@ const PRODUCTS = [
   },
   {
     id: "eventos",
-    category: "eventos",
+    category: "evento",
     name: "Tortas para eventos",
     tag: null,
     shortDescription: "Tortas de dos pisos para eventos grandes o celebraciones más elegantes.",
@@ -96,58 +122,97 @@ const PRODUCTS = [
     priceFrom: null,
     priceLabel: "Consultar",
     priceIsEstimate: false,
-    thumbnail: "img/disenos/eventos-1.png",
+    thumbnail: "img/tortas-evento/evento-1.png",
     detailRows: [
       ["Peso mínimo", "3 kg"],
       ["Ideal para", "Casamientos, XV años y eventos grandes"],
       ["Precio", "Se cotiza según diseño y cantidad de porciones"]
     ],
     whatsappMessage: "Hola Meli! Quería consultar disponibilidad para una torta de dos pisos para un evento."
+  },
+  {
+    id: "cupcakes",
+    category: "cupcakes",
+    name: "Torta + 12 cupcakes a juego",
+    tag: "Extra",
+    shortDescription: "Sumale a cualquier torta una docena de cupcakes decorados a juego.",
+    diameter: "Docena (12 unidades)",
+    weight: "—",
+    servings: "+12 porciones extra",
+    priceFrom: CUPCAKES_ADDON_PRICE,
+    priceLabel: `+${formatPrice(CUPCAKES_ADDON_PRICE)} sobre el precio de la torta`,
+    priceIsEstimate: true,
+    thumbnail: "img/cupcakes/cupcakes-1.png",
+    detailRows: [
+      ["Qué incluye", "12 cupcakes decorados a juego con la torta elegida"],
+      ["Cómo pedirlo", "Se agrega como extra sobre cualquier torta del catálogo"],
+      ["Precio", "Se suma al precio de la torta — valor a confirmar"]
+    ],
+    whatsappMessage: "Hola Meli! Quería consultar por el extra de 12 cupcakes a juego con mi torta."
   }
 ];
 
 /* ---------------------------------------------------------
    DATOS: GALERÍA DE DISEÑOS (deslizable, agrupada por tipo)
+   Las carpetas de imágenes coinciden con las del repositorio
+   de GitHub (tortas-redondas, tortas-corazon, tortas-rectangulares,
+   tortas-tematicas, tortas-evento, cupcakes).
    Todas las fotos son PNG con fondo transparente: el fondo
    liso y la sombra se agregan con CSS (clase .photo-frame),
    no hace falta editarlas para que combinen con el sitio.
 --------------------------------------------------------- */
 const DESIGN_GALLERY = {
-  redonda: {
+  redondas: {
     label: "Redondas",
     images: [
-      { src: "img/disenos/redonda-1.png", alt: "Torta redonda con relleno de dulce de leche" },
-      { src: "img/disenos/redonda-2.png", alt: "Torta redonda de chocolate" },
-      { src: "img/disenos/redonda-3.png", alt: "Torta redonda con frutillas" },
-      { src: "img/disenos/redonda-4.png", alt: "Torta redonda decorada con chantilly" }
+      { src: "img/tortas-redondas/redonda-1.png", alt: "Torta redonda con relleno de dulce de leche" },
+      { src: "img/tortas-redondas/redonda-2.png", alt: "Torta redonda de chocolate" },
+      { src: "img/tortas-redondas/redonda-3.png", alt: "Torta redonda con frutillas" },
+      { src: "img/tortas-redondas/redonda-4.png", alt: "Torta redonda decorada con chantilly" }
     ]
   },
   corazon: {
     label: "Corazón",
     images: [
-      { src: "img/disenos/corazon-1.png", alt: "Torta corazón clásica" },
-      { src: "img/disenos/corazon-2.png", alt: "Torta corazón con dulce de leche" },
-      { src: "img/disenos/corazon-3.png", alt: "Torta corazón decorada" },
-      { src: "img/disenos/corazon-4.png", alt: "Torta corazón con frutillas" }
+      { src: "img/tortas-corazon/corazon-1.png", alt: "Torta corazón clásica" },
+      { src: "img/tortas-corazon/corazon-2.png", alt: "Torta corazón con dulce de leche" },
+      { src: "img/tortas-corazon/corazon-3.png", alt: "Torta corazón decorada" },
+      { src: "img/tortas-corazon/corazon-4.png", alt: "Torta corazón con frutillas" }
     ]
   },
-  tematica: {
+  rectangulares: {
+    label: "Rectangulares",
+    images: [
+      { src: "img/tortas-rectangulares/rectangular-1.png", alt: "Torta rectangular 1" },
+      { src: "img/tortas-rectangulares/rectangular-2.png", alt: "Torta rectangular 2" },
+      { src: "img/tortas-rectangulares/rectangular-3.png", alt: "Torta rectangular 3" }
+    ]
+  },
+  tematicas: {
     label: "Temáticas",
     images: [
-      { src: "img/disenos/tematica-1.png", alt: "Torta temática personalizada 1" },
-      { src: "img/disenos/tematica-2.png", alt: "Torta temática personalizada 2" },
-      { src: "img/disenos/tematica-3.png", alt: "Torta temática personalizada 3" },
-      { src: "img/disenos/tematica-4.png", alt: "Torta temática personalizada 4" },
-      { src: "img/disenos/tematica-5.png", alt: "Torta temática personalizada 5" },
-      { src: "img/disenos/tematica-6.png", alt: "Torta temática personalizada 6" }
+      { src: "img/tortas-tematicas/tematica-1.png", alt: "Torta temática personalizada 1" },
+      { src: "img/tortas-tematicas/tematica-2.png", alt: "Torta temática personalizada 2" },
+      { src: "img/tortas-tematicas/tematica-3.png", alt: "Torta temática personalizada 3" },
+      { src: "img/tortas-tematicas/tematica-4.png", alt: "Torta temática personalizada 4" },
+      { src: "img/tortas-tematicas/tematica-5.png", alt: "Torta temática personalizada 5" },
+      { src: "img/tortas-tematicas/tematica-6.png", alt: "Torta temática personalizada 6" }
     ]
   },
-  eventos: {
+  evento: {
     label: "Eventos",
     images: [
-      { src: "img/disenos/eventos-1.png", alt: "Torta de dos pisos para evento" },
-      { src: "img/disenos/eventos-2.png", alt: "Torta de dos pisos elegante" },
-      { src: "img/disenos/eventos-3.png", alt: "Torta de dos pisos decorada" }
+      { src: "img/tortas-evento/evento-1.png", alt: "Torta de dos pisos para evento" },
+      { src: "img/tortas-evento/evento-2.png", alt: "Torta de dos pisos elegante" },
+      { src: "img/tortas-evento/evento-3.png", alt: "Torta de dos pisos decorada" }
+    ]
+  },
+  cupcakes: {
+    label: "Cupcakes",
+    images: [
+      { src: "img/cupcakes/cupcakes-1.png", alt: "Docena de cupcakes a juego 1" },
+      { src: "img/cupcakes/cupcakes-2.png", alt: "Docena de cupcakes a juego 2" },
+      { src: "img/cupcakes/cupcakes-3.png", alt: "Docena de cupcakes a juego 3" }
     ]
   }
 };
@@ -583,6 +648,11 @@ function renderCustomizerOptions() {
     document.getElementById(id).addEventListener("change", updateEstimatedPrice);
   });
 
+  /* Extra: 12 cupcakes a juego */
+  document.getElementById("cupcakesAddonPrice").textContent =
+    `+${formatPrice(CUPCAKES_ADDON_PRICE)} sobre el precio de la torta`;
+  document.getElementById("cupcakesAddon").addEventListener("change", updateEstimatedPrice);
+
   document.getElementById("chocolateHint").style.display = "none";
 }
 
@@ -600,6 +670,10 @@ function updateEstimatedPrice() {
   if (filling1) price += filling1.extra;
   if (selectedFillingCount.value === 2 && filling2) price += filling2.extra;
   if (decoration) price += decoration.extra;
+
+  if (document.getElementById("cupcakesAddon").checked) {
+    price += CUPCAKES_ADDON_PRICE;
+  }
 
   document.getElementById("estimatedPrice").textContent = formatPrice(price);
 }

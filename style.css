@@ -76,17 +76,13 @@ ul{list-style:none;}
 
 .logo-container{display:flex;align-items:center;gap:9px;min-width:0;}
 
-.logo-placeholder,
 .logo-img{
-  width:40px;height:40px;flex-shrink:0;
+  width:42px;height:42px;flex-shrink:0;
   border-radius:50%;
-  display:grid;place-items:center;
-  background:linear-gradient(135deg,var(--pink-dark),var(--purple-dark));
-  font-family:"Fraunces",serif;
-  font-weight:700;
-  color:white;
-  font-size:.95rem;
-  object-fit:cover;
+  background:linear-gradient(135deg,var(--pink-light),var(--purple-light));
+  border:1px solid var(--border);
+  object-fit:contain;
+  padding:4px;
 }
 
 .logo-text{min-width:0;}
@@ -482,6 +478,31 @@ select,input,textarea{
 textarea{min-height:110px;resize:vertical;}
 
 .second-filling{display:none;}
+
+.addon-group{margin-bottom:22px;}
+.checkbox-option{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  padding:14px;
+  border:1px solid var(--border);
+  background:white;
+  border-radius:14px;
+  cursor:pointer;
+}
+.checkbox-option input{
+  width:20px;height:20px;
+  flex-shrink:0;
+  margin-top:2px;
+  accent-color:var(--purple-dark);
+}
+.checkbox-option span{display:block;}
+.checkbox-option strong{display:block;font-size:.88rem;}
+.checkbox-option small{display:block;color:var(--text-light);font-size:.76rem;margin-top:2px;}
+.checkbox-option:has(input:checked){
+  border-color:var(--purple-dark);
+  background:var(--purple-light);
+}
 
 .price-box{
   text-align:center;
