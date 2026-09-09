@@ -35,7 +35,7 @@ const PRODUCTS = [
     priceFrom: 23000,
     priceLabel: "Desde $23.000",
     priceIsEstimate: false,
-    thumbnail: "img/tortas-redondas",
+    thumbnail: "img/tortas-redondas/torta-redonda1.jpeg",
     detailRows: [
       ["Bizcochuelo", "Vainilla o chocolate (chocolate: pedir con 2 días de anticipación)"],
       ["Relleno", "A elección — dulce de leche, chantilly, mousse y más"],
@@ -57,7 +57,7 @@ const PRODUCTS = [
     priceFrom: 25000,
     priceLabel: "Desde $25.000",
     priceIsEstimate: false,
-    thumbnail: "img/tortas-corazon",
+    thumbnail: "img/tortas-corazon/torta-corazon1.jpeg",
     detailRows: [
       ["Bizcochuelo", "Vainilla o chocolate (chocolate: pedir con 2 días de anticipación)"],
       ["Relleno", "Los mismos disponibles para la torta redonda"],
@@ -80,7 +80,7 @@ const PRODUCTS = [
     priceFrom: null,
     priceLabel: "Consultar",
     priceIsEstimate: false,
-    thumbnail: "C:\meli-pasteles\meli-pasteles\img\tortas-rectangulares\torta-rectangular1.jpeg",
+    thumbnail: "img/tortas-rectangulares/torta-rectangular1.jpeg",
     detailRows: [
       ["Bizcochuelo", "Vainilla o chocolate (chocolate: pedir con 2 días de anticipación)"],
       ["Relleno", "A elección — mismas opciones que las tortas redondas"],
@@ -101,7 +101,7 @@ const PRODUCTS = [
     priceFrom: 23000,
     priceLabel: "Precio estimado desde $23.000",
     priceIsEstimate: true,
-    thumbnail: "img/tortas-tematicas/tematica-1.png",
+    thumbnail: "img/tortas-tematicas/torta-tematica1.png",
     detailRows: [
       ["Decoración", "Toppers, colores y diseño según la temática elegida"],
       ["Imágenes impresas", "+$5.000 (papel fotográfico)"],
@@ -122,7 +122,7 @@ const PRODUCTS = [
     priceFrom: null,
     priceLabel: "Consultar",
     priceIsEstimate: false,
-    thumbnail: "img/tortas-evento/evento-1.png",
+    thumbnail: "img/tortas%20evento/torta-evento1..jpeg",
     detailRows: [
       ["Peso mínimo", "3 kg"],
       ["Ideal para", "Casamientos, XV años y eventos grandes"],
@@ -142,7 +142,7 @@ const PRODUCTS = [
     priceFrom: CUPCAKES_ADDON_PRICE,
     priceLabel: `+${formatPrice(CUPCAKES_ADDON_PRICE)} sobre el precio de la torta`,
     priceIsEstimate: true,
-    thumbnail: "img/cupcakes/cupcakes-1.png",
+    thumbnail: "img/tortas-corazon/cupcakes/cup1.jpeg",
     detailRows: [
       ["Qué incluye", "12 cupcakes decorados a juego con la torta elegida"],
       ["Cómo pedirlo", "Se agrega como extra sobre cualquier torta del catálogo"],
@@ -162,59 +162,81 @@ const PRODUCTS = [
    no hace falta editarlas para que combinen con el sitio.
 --------------------------------------------------------- */
 const DESIGN_GALLERY = {
-  redondas: {
-    label: "Redondas",
-    images: [
-      { src: "img/tortas-redondas/redonda-1.png", alt: "Torta redonda con relleno de dulce de leche" },
-      { src: "img/tortas-redondas/redonda-2.png", alt: "Torta redonda de chocolate" },
-      { src: "img/tortas-redondas/redonda-3.png", alt: "Torta redonda con frutillas" },
-      { src: "img/tortas-redondas/redonda-4.png", alt: "Torta redonda decorada con chantilly" }
-    ]
-  },
-  corazon: {
-    label: "Corazón",
-    images: [
-      { src: "img/tortas-corazon/corazon-1.png", alt: "Torta corazón clásica" },
-      { src: "img/tortas-corazon/corazon-2.png", alt: "Torta corazón con dulce de leche" },
-      { src: "img/tortas-corazon/corazon-3.png", alt: "Torta corazón decorada" },
-      { src: "img/tortas-corazon/corazon-4.png", alt: "Torta corazón con frutillas" }
-    ]
-  },
-  rectangulares: {
-    label: "Rectangulares",
-    images: [
-      { src: "img/tortas-rectangulares/rectangular-1.png", alt: "Torta rectangular 1" },
-      { src: "img/tortas-rectangulares/rectangular-2.png", alt: "Torta rectangular 2" },
-      { src: "img/tortas-rectangulares/rectangular-3.png", alt: "Torta rectangular 3" }
-    ]
-  },
-  tematicas: {
-    label: "Temáticas",
-    images: [
-      { src: "img/tortas-tematicas/tematica-1.png", alt: "Torta temática personalizada 1" },
-      { src: "img/tortas-tematicas/tematica-2.png", alt: "Torta temática personalizada 2" },
-      { src: "img/tortas-tematicas/tematica-3.png", alt: "Torta temática personalizada 3" },
-      { src: "img/tortas-tematicas/tematica-4.png", alt: "Torta temática personalizada 4" },
-      { src: "img/tortas-tematicas/tematica-5.png", alt: "Torta temática personalizada 5" },
-      { src: "img/tortas-tematicas/tematica-6.png", alt: "Torta temática personalizada 6" }
-    ]
-  },
-  evento: {
-    label: "Eventos",
-    images: [
-      { src: "img/tortas-evento/evento-1.png", alt: "Torta de dos pisos para evento" },
-      { src: "img/tortas-evento/evento-2.png", alt: "Torta de dos pisos elegante" },
-      { src: "img/tortas-evento/evento-3.png", alt: "Torta de dos pisos decorada" }
-    ]
-  },
-  cupcakes: {
-    label: "Cupcakes",
-    images: [
-      { src: "img/cupcakes/cupcakes-1.png", alt: "Docena de cupcakes a juego 1" },
-      { src: "img/cupcakes/cupcakes-2.png", alt: "Docena de cupcakes a juego 2" },
-      { src: "img/cupcakes/cupcakes-3.png", alt: "Docena de cupcakes a juego 3" }
-    ]
-  }
+
+    redondas: {
+        label: "Redondas",
+        images: [
+            { src: "img/tortas-redondas/torta-redonda1.jpeg", alt: "Torta redonda 1" },
+            { src: "img/tortas-redondas/torta-redonda2.jpeg", alt: "Torta redonda 2" },
+            { src: "img/tortas-redondas/torta-redonda3.jpeg", alt: "Torta redonda 3" },
+            { src: "img/tortas-redondas/torta-redonda4.jpeg", alt: "Torta redonda 4" },
+            { src: "img/tortas-redondas/torta-redonda5.jpeg", alt: "Torta redonda 5" },
+            { src: "img/tortas-redondas/torta-redonda6.jpeg", alt: "Torta redonda 6" },
+            { src: "img/tortas-redondas/torta-redonda7.jpeg", alt: "Torta redonda 7" },
+            { src: "img/tortas-redondas/torta-redonda8.jpeg", alt: "Torta redonda 8" },
+            { src: "img/tortas-redondas/torta-redonda9.jpeg", alt: "Torta redonda 9" },
+            { src: "img/tortas-redondas/torta-redonda10.jpeg", alt: "Torta redonda 10" }
+        ]
+    },
+
+    corazon: {
+        label: "Corazón",
+        images: [
+            { src: "img/tortas-corazon/torta-corazon1.jpeg", alt: "Torta corazón 1" },
+            { src: "img/tortas-corazon/torta-corazon2.jpeg", alt: "Torta corazón 2" },
+            { src: "img/tortas-corazon/torta-corazon3.jpeg", alt: "Torta corazón 3" },
+            { src: "img/tortas-corazon/torta-corazon4.jpeg", alt: "Torta corazón 4" },
+            { src: "img/tortas-corazon/torta-corazon5.jpeg", alt: "Torta corazón 5" },
+            { src: "img/tortas-corazon/torta-corazon6.jpeg", alt: "Torta corazón 6" }
+        ]
+    },
+
+    rectangulares: {
+        label: "Rectangulares",
+        images: [
+            { src: "img/tortas-rectangulares/torta-rectangular1.jpeg", alt: "Torta rectangular 1" },
+            { src: "img/tortas-rectangulares/torta-rectangular2.jpeg", alt: "Torta rectangular 2" }
+        ]
+    },
+
+    tematicas: {
+        label: "Temáticas",
+        images: [
+            { src: "img/tortas-tematicas/torta-tematica1.jpeg", alt: "Torta temática 1" },
+            { src: "img/tortas-tematicas/torta-tematica2.jpeg", alt: "Torta temática 2" },
+            { src: "img/tortas-tematicas/torta-tematica3.jpeg", alt: "Torta temática 3" },
+            { src: "img/tortas-tematicas/torta-tematica4.jpeg", alt: "Torta temática 4" },
+            { src: "img/tortas-tematicas/torta-tematica5.jpeg", alt: "Torta temática 5" },
+            { src: "img/tortas-tematicas/torta-tematica6.jpeg", alt: "Torta temática 6" },
+            { src: "img/tortas-tematicas/torta-tematica7.jpeg", alt: "Torta temática 7" },
+            { src: "img/tortas-tematicas/torta-tematica8.jpeg", alt: "Torta temática 8" },
+            { src: "img/tortas-tematicas/torta-tematica9.jpeg", alt: "Torta temática 9" },
+            { src: "img/tortas-tematicas/torta-tematica10.jpeg", alt: "Torta temática 10" },
+            { src: "img/tortas-tematicas/t.jpeg", alt: "Torta temática" }
+        ]
+    },
+
+    evento: {
+        label: "Eventos",
+        images: [
+            { src: "img/tortas%20evento/torta-evento1..jpeg", alt: "Torta de evento 1" },
+            { src: "img/tortas%20evento/torta-evento2.jpeg", alt: "Torta de evento 2" },
+            { src: "img/tortas%20evento/torta-evento3.jpeg", alt: "Torta de evento 3" },
+            { src: "img/tortas%20evento/torta-evento4.jpeg", alt: "Torta de evento 4" }
+        ]
+    },
+
+    cupcakes: {
+        label: "Cupcakes",
+        images: [
+            { src: "img/tortas-corazon/cupcakes/cup1.jpeg", alt: "Cupcakes 1" },
+            { src: "img/tortas-corazon/cupcakes/cup2.jpeg", alt: "Cupcakes 2" },
+            { src: "img/tortas-corazon/cupcakes/cup3.jpeg", alt: "Cupcakes 3" },
+            { src: "img/tortas-corazon/cupcakes/cup4.jpeg", alt: "Cupcakes 4" },
+            { src: "img/tortas-corazon/cupcakes/cup5.jpeg", alt: "Cupcakes 5" }
+        ]
+    }
+
 };
 
 /* ---------------------------------------------------------
@@ -416,7 +438,7 @@ function closeCakeModal() {
 /* ---------------------------------------------------------
    GALERÍA DE DISEÑOS (tabs + carrusel deslizable + lightbox)
 --------------------------------------------------------- */
-let currentGalleryCategory = "redonda";
+let currentGalleryCategory = "redondas";
 
 function renderGalleryTabs() {
   const tabsContainer = document.getElementById("galleryTabs");
