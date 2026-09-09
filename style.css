@@ -74,13 +74,12 @@ ul{list-style:none;}
   z-index:60;
 }
 
-.logo-container{display:flex;align-items:center;gap:9px;min-width:0;}
+.logo-container{display:flex;
+  align-items:center;
+  gap:9px;min-width:0;}
 
 .logo-img{
-  width:42px;height:42px;flex-shrink:0;
-  border-radius:50%;
-  background:linear-gradient(135deg,var(--pink-light),var(--purple-light));
-  border:1px solid var(--border);
+  width: 150px;height: 150px;flex-shrink:0;
   object-fit:contain;
   padding:4px;
 }

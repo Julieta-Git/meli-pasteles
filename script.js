@@ -101,7 +101,7 @@ const PRODUCTS = [
     priceFrom: 23000,
     priceLabel: "Precio estimado desde $23.000",
     priceIsEstimate: true,
-    thumbnail: "img/tortas-tematicas/torta-tematica1.png",
+    thumbnail: "img/tortas-tematicas/torta-tematica1.jpeg",
     detailRows: [
       ["Decoración", "Toppers, colores y diseño según la temática elegida"],
       ["Imágenes impresas", "+$5.000 (papel fotográfico)"],
