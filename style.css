@@ -108,8 +108,7 @@ ul{list-style:none;}
 .logo-container{display:flex;align-items:center;gap:9px;min-width:0;}
 
 .logo-img{
-  width:100px;height:100px;flex-shrink:0;
-  border:1px solid rgba(157,128,189,.25);
+  width:120px;height:120px;flex-shrink:0;
   object-fit:contain;
   padding:4px;
 }

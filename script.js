@@ -666,6 +666,26 @@ function renderCustomizerOptions() {
     .map(option => `<option value="${option.value}">${option.label || option.value}${option.labelSuffix || ""}</option>`)
     .join("");
 
+  /* cupcakes*/
+
+  const cupcakesContainer = document.getElementById("cupcakesAddonContainer");
+
+if (cupcakesContainer) {
+  cupcakesContainer.innerHTML = `
+    <label class="cupcakes-option">
+      <input type="checkbox" id="cupcakesAddon">
+      <span>
+        <strong>12 cupcakes a juego</strong>
+        <small>+ $10.000</small>
+      </span>
+    </label>
+  `;
+
+  document
+    .getElementById("cupcakesAddon")
+    .addEventListener("change", updateEstimatedPrice);
+}
+
   /* Recalcular precio ante cualquier cambio en los selects */
   ["bizcochuelo", "relleno1", "relleno2", "decoracion"].forEach(id => {
     document.getElementById(id).addEventListener("change", updateEstimatedPrice);
@@ -680,7 +700,7 @@ function updateEstimatedPrice() {
   const filling1Value = document.getElementById("relleno1").value;
   const filling2Value = document.getElementById("relleno2").value;
   const decorationValue = document.getElementById("decoracion").value;
-
+  const cupcakesAddon = document.getElementById("cupcakesAddon");
   const filling1 = FILLING_OPTIONS.find(f => f.value === filling1Value);
   const filling2 = FILLING_OPTIONS.find(f => f.value === filling2Value);
   const decoration = DECORATION_OPTIONS.find(d => d.value === decorationValue);
@@ -688,7 +708,8 @@ function updateEstimatedPrice() {
   if (filling1) price += filling1.extra;
   if (selectedFillingCount.value === 2 && filling2) price += filling2.extra;
   if (decoration) price += decoration.extra;
-
+  if (cupcakesAddon && cupcakesAddon.checked) {
+  price += CUPCAKES_ADDON_PRICE;}
 
   document.getElementById("estimatedPrice").textContent = formatPrice(price);
 }
@@ -699,6 +720,7 @@ function sendCustomOrder() {
   const filling2 = document.getElementById("relleno2").value;
   const decoration = document.getElementById("decoracion").value;
   const estimatedPrice = document.getElementById("estimatedPrice").textContent;
+  const cupcakesAddon = document.getElementById("cupcakesAddon");
 
   let message = `Hola Meli! Quiero consultar por una torta personalizada.
 
@@ -710,6 +732,9 @@ Relleno 1: ${filling1}`;
   if (selectedFillingCount.value === 2) {
     message += `\nRelleno 2: ${filling2}`;
   }
+  if (cupcakesAddon && cupcakesAddon.checked) {
+  message += `\nExtra: 12 cupcakes a juego (+$10.000)`;
+}
 
   message += `\nDecoración: ${decoration}`;
 
