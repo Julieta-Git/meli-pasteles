@@ -670,12 +670,7 @@ function renderCustomizerOptions() {
   ["bizcochuelo", "relleno1", "relleno2", "decoracion"].forEach(id => {
     document.getElementById(id).addEventListener("change", updateEstimatedPrice);
   });
-
-  /* Extra: 12 cupcakes a juego */
-  document.getElementById("cupcakesAddonPrice").textContent =
-    `+${formatPrice(CUPCAKES_ADDON_PRICE)} sobre el precio de la torta`;
-  document.getElementById("cupcakesAddon").addEventListener("change", updateEstimatedPrice);
-
+  
   document.getElementById("chocolateHint").style.display = "none";
 }
 
@@ -694,9 +689,6 @@ function updateEstimatedPrice() {
   if (selectedFillingCount.value === 2 && filling2) price += filling2.extra;
   if (decoration) price += decoration.extra;
 
-  if (document.getElementById("cupcakesAddon").checked) {
-    price += CUPCAKES_ADDON_PRICE;
-  }
 
   document.getElementById("estimatedPrice").textContent = formatPrice(price);
 }
@@ -706,7 +698,6 @@ function sendCustomOrder() {
   const filling1 = document.getElementById("relleno1").value;
   const filling2 = document.getElementById("relleno2").value;
   const decoration = document.getElementById("decoracion").value;
-  const wantsCupcakes = document.getElementById("cupcakesAddon").checked;
   const estimatedPrice = document.getElementById("estimatedPrice").textContent;
 
   let message = `Hola Meli! Quiero consultar por una torta personalizada.
@@ -722,9 +713,6 @@ Relleno 1: ${filling1}`;
 
   message += `\nDecoración: ${decoration}`;
 
-  if (wantsCupcakes) {
-    message += `\nExtra: sumar 12 cupcakes a juego`;
-  }
 
   message += `\nPrecio estimado: ${estimatedPrice}\n\nQuería consultar disponibilidad y precio final.`;
 
