@@ -10,28 +10,59 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
+<!-- Ícono de la pestaña (fondo violeta clarito, igual que el header) -->
+<link rel="icon" href="img/og-image.png" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+
+<!-- Vista previa al compartir el link (fondo violeta clarito) -->
+<meta property="og:title" content="Meli Pasteles | Tortas artesanales y personalizadas">
+<meta property="og:description" content="Tortas artesanales y personalizadas de Meli Pasteles. Mirá el catálogo, armá tu torta y consultá por WhatsApp.">
+<meta property="og:image" content="img/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="img/og-image.png">
+
+<!-- v2: cambiar este número cada vez que se suba una actualización,
+     así el navegador no muestra una versión vieja guardada en caché -->
+<link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
+
+<!-- Barra que muestra cuánto se bajó en la página -->
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- ============================================
      HEADER
 ============================================ -->
 <header class="header">
   <a href="#inicio" class="logo-container">
-         <img src="img/nombre-sin-fondo.png" alt="Meli Pasteles" class="logo-img"> 
-    
+    <img src="img/nombre-sin-fondo.png" alt="Meli Pasteles" class="logo-img">
   </a>
 
   <nav class="header-nav">
     <a href="#catalogo">Catálogo</a>
-    <a href="#disenos">Diseños</a>
     <a href="#armar">Armar torta</a>
+  </nav>
+
+  <div class="header-actions">
     <a class="header-ig" href="https://www.instagram.com/melipasteless/" target="_blank" rel="noopener" aria-label="Instagram de Meli Pasteles">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
     </a>
-  </nav>
+
+    <button type="button" class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </header>
+
+<nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <a href="#catalogo" class="mobile-nav-link">Catálogo</a>
+  <a href="#armar" class="mobile-nav-link">Armar mi torta</a>
+  <a href="#" class="mobile-nav-link mobile-nav-cta js-whatsapp-general">Consultar por WhatsApp</a>
+</nav>
+<div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
 
 <main id="inicio">
 
@@ -43,6 +74,8 @@
     <div class="hero-blob hero-blob-2"></div>
 
     <div class="hero-content">
+      <img src="img/nombre-sin-fondo.png" alt="Meli Pasteles" class="hero-brand-name">
+
       <span class="eyebrow">Pastelería artesanal · Formosa Capital</span>
       <h1>Una torta especial<br>para un momento especial</h1>
       <p>Tortas artesanales y personalizadas, hechas a pedido con dulce de leche, chantilly y mucho cariño.</p>
@@ -55,55 +88,22 @@
   </section>
 
   <!-- ============================================
-       INFO RÁPIDA
-  ============================================ -->
-  <section class="quick-info" aria-label="Información destacada">
-    <div class="info-item">
-      <span class="info-icon" aria-hidden="true">🎂</span>
-      <strong>Personalizadas</strong>
-      <small>A tu gusto</small>
-    </div>
-    <div class="info-item">
-      <span class="info-icon" aria-hidden="true">🍰</span>
-      <strong>Artesanales</strong>
-      <small>Hechas a pedido</small>
-    </div>
-    <div class="info-item">
-      <span class="info-icon" aria-hidden="true">🚚</span>
-      <strong>Envíos</strong>
-      <small>Por la tarde</small>
-    </div>
-  </section>
-
-  <!-- ============================================
-       CATÁLOGO (renderizado desde script.js)
+       CATÁLOGO
+       Cada tarjeta muestra: fotos (deslizables, con
+       TODAS las fotos de esa carpeta), nombre, una
+       descripción corta y el precio. El resto de los
+       datos (peso, diámetro, porciones, etc.) aparece
+       recién al tocar "Ver detalles".
   ============================================ -->
   <section id="catalogo" class="section">
     <div class="section-heading">
       <span class="eyebrow">Nuestro catálogo</span>
       <h2>Elegí tu torta</h2>
-      <p>Estas son nuestras opciones base. Todas pueden personalizarse — consultanos tu idea.</p>
+      <p>Deslizá las fotos de cada torta para ver colores y texturas. Todas pueden personalizarse — consultanos tu idea.</p>
     </div>
 
-    <!-- Las tarjetas se generan dinámicamente desde el array "products" en script.js -->
+    <!-- Las tarjetas se generan dinámicamente desde PRODUCTS en js/data.js -->
     <div class="catalog-grid" id="catalogGrid"></div>
-  </section>
-
-  <!-- ============================================
-       GALERÍA DE DISEÑOS (deslizable + lightbox)
-  ============================================ -->
-  <section id="disenos" class="gallery-section">
-    <div class="section-heading">
-      <span class="eyebrow">Inspiración</span>
-      <h2>Mirá nuestros diseños</h2>
-      <p>Deslizá para ver todas las fotos de cada tipo de torta. Tocá una imagen para verla más grande.</p>
-    </div>
-
-    <div class="gallery-tabs" id="galleryTabs" role="tablist"></div>
-
-    <div class="gallery-track" id="galleryTrack" role="group" aria-label="Galería de fotos"></div>
-
-    <div class="gallery-dots" id="galleryDots" aria-hidden="true"></div>
   </section>
 
   <!-- ============================================
@@ -147,6 +147,17 @@
       <div class="form-group">
         <label for="decoracion">Decoración</label>
         <select id="decoracion"></select>
+        <small class="form-hint">Topper y moño son opcionales, sin cargo. Colores sujetos a disponibilidad — consultanos.</small>
+      </div>
+
+      <div class="form-group addon-group">
+        <label class="checkbox-option" for="cupcakesAddon">
+          <input type="checkbox" id="cupcakesAddon">
+          <span>
+            <strong>Sumar 12 cupcakes a juego</strong>
+            <small id="cupcakesAddonPrice"></small>
+          </span>
+        </label>
       </div>
 
       <div class="price-box">
@@ -180,6 +191,14 @@
       </div>
 
       <div class="information-card">
+        <span aria-hidden="true">🎀</span>
+        <div>
+          <h3>Topper y moño</h3>
+          <p>Ambos son opcionales y sin cargo. Los colores del moño están sujetos a disponibilidad — consultanos antes de pedir.</p>
+        </div>
+      </div>
+
+      <div class="information-card">
         <span aria-hidden="true">💳</span>
         <div>
           <h3>Medios de pago</h3>
@@ -207,32 +226,10 @@
         <span aria-hidden="true">📍</span>
         <div>
           <h3>Zona</h3>
-          <p>Barrio Sagrado Corazón. Consultas a partir de las 11:00 hs.</p>
+          <p>Formosa Capital. Consultas a partir de las 11:00 hs.</p>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- ============================================
-       OPINIONES
-  ============================================ -->
-  <section class="reviews-section">
-    <div class="section-heading">
-      <span class="eyebrow">Opiniones</span>
-      <h2>Lo que dicen nuestros clientes</h2>
-
-      <div class="rating-summary">
-        <strong>5.0</strong>
-        <div>
-          <div class="stars" aria-hidden="true">★★★★★</div>
-          <small>Opiniones de demostración — próximamente reseñas reales verificadas</small>
-        </div>
-      </div>
-    </div>
-
-    <div class="reviews-container" id="reviewsContainer"></div>
-
-    <button class="outline-button review-button" id="openReviewModalBtn">Dejar una opinión</button>
   </section>
 
   <!-- ============================================
@@ -274,13 +271,19 @@
 
 <!-- ============================================
      MODAL: DETALLE DE TORTA
+     Incluye la galería deslizable con todas las fotos
+     de esa categoría (reemplaza a la sección "Inspiración").
 ============================================ -->
 <div class="modal" id="cakeModal" aria-hidden="true">
   <div class="modal-content">
-    <button class="close-modal" id="closeCakeModal" aria-label="Cerrar">×</button>
+    <button type="button" class="close-modal" id="closeCakeModal" aria-label="Cerrar">×</button>
     <span class="eyebrow">Meli Pasteles</span>
     <h2 id="modalTitle">Torta</h2>
+
+    <div class="modal-gallery" id="modalGallery"></div>
+
     <div id="modalContent"></div>
+
     <a id="modalWhatsapp" href="#" target="_blank" rel="noopener" class="btn btn-primary full-button">
       Consultar por WhatsApp
     </a>
@@ -288,49 +291,18 @@
 </div>
 
 <!-- ============================================
-     MODAL: RESEÑA
-============================================ -->
-<div class="modal" id="reviewModal" aria-hidden="true">
-  <div class="modal-content">
-    <button class="close-modal" id="closeReviewModal" aria-label="Cerrar">×</button>
-    <span class="eyebrow">Tu opinión</span>
-    <h2>¿Cómo fue tu experiencia?</h2>
-
-    <div class="rating-selector" id="ratingSelector">
-      <button type="button" data-rating="1" aria-label="1 estrella">★</button>
-      <button type="button" data-rating="2" aria-label="2 estrellas">★</button>
-      <button type="button" data-rating="3" aria-label="3 estrellas">★</button>
-      <button type="button" data-rating="4" aria-label="4 estrellas">★</button>
-      <button type="button" data-rating="5" aria-label="5 estrellas">★</button>
-    </div>
-
-    <input type="text" id="reviewName" placeholder="Tu nombre">
-    <textarea id="reviewText" placeholder="Contanos tu experiencia..."></textarea>
-
-    <button class="btn btn-primary full-button" id="submitReviewBtn">Enviar opinión</button>
-
-    <p id="reviewMessage" class="review-message"></p>
-
-    <small class="form-hint">
-      Esta opinión todavía no se guarda en una base de datos. Cuando el sitio se conecte a Supabase,
-      Meli podrá aprobarla antes de que se muestre públicamente.
-    </small>
-  </div>
-</div>
-
-<!-- ============================================
      LIGHTBOX (ver imagen ampliada)
 ============================================ -->
 <div class="lightbox" id="lightbox" aria-hidden="true">
-  <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar imagen">×</button>
-  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Imagen anterior">‹</button>
+  <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Cerrar imagen">×</button>
+  <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Imagen anterior">‹</button>
 
   <div class="lightbox-stage">
     <img id="lightboxImage" src="" alt="">
     <p class="lightbox-caption" id="lightboxCaption"></p>
   </div>
 
-  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Imagen siguiente">›</button>
+  <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Imagen siguiente">›</button>
 </div>
 
 <!-- ============================================
@@ -340,6 +312,15 @@
   <svg viewBox="0 0 32 32" width="26" height="26" fill="currentColor"><path d="M16.04 3C9.4 3 4 8.36 4 15c0 2.34.66 4.53 1.8 6.4L4 29l7.8-1.75A11.9 11.9 0 0 0 16.04 27C22.68 27 28 21.64 28 15S22.68 3 16.04 3Zm0 21.7c-1.98 0-3.83-.55-5.4-1.5l-.39-.23-4.16.93.95-4.06-.25-.4A9.66 9.66 0 0 1 5.3 15c0-5.9 4.8-10.7 10.74-10.7 5.93 0 10.74 4.8 10.74 10.7 0 5.9-4.81 10.7-10.74 10.7Zm5.9-8.02c-.32-.16-1.9-.94-2.2-1.04-.3-.11-.51-.16-.73.16-.21.32-.84 1.04-1.03 1.25-.19.22-.38.24-.7.08-.32-.16-1.36-.5-2.6-1.6-.96-.86-1.6-1.92-1.79-2.24-.19-.32-.02-.5.14-.65.14-.14.32-.38.48-.57.16-.19.21-.32.32-.54.11-.22.05-.4-.03-.57-.08-.16-.73-1.75-1-2.4-.26-.62-.53-.54-.73-.55h-.62c-.21 0-.57.08-.86.4-.3.32-1.13 1.1-1.13 2.7 0 1.6 1.16 3.14 1.32 3.36.16.22 2.28 3.48 5.53 4.88.77.33 1.37.53 1.84.68.77.25 1.47.21 2.03.13.62-.09 1.9-.78 2.17-1.53.27-.75.27-1.4.19-1.53-.08-.13-.29-.21-.6-.37Z"/></svg>
 </a>
 
-<script src="script.js"></script>
+<!-- Módulos, en orden de dependencia. "defer" para que el HTML
+     ya esté armado cuando cada script corra. -->
+<script src="js/utils.js?v=2" defer></script>
+<script src="js/data.js?v=2" defer></script>
+<script src="js/integrations.js?v=2" defer></script>
+<script src="js/gallery.js?v=2" defer></script>
+<script src="js/catalog.js?v=2" defer></script>
+<script src="js/customizer.js?v=2" defer></script>
+<script src="js/nav.js?v=2" defer></script>
+<script src="js/main.js?v=2" defer></script>
 </body>
 </html>
