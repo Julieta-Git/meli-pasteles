@@ -230,9 +230,7 @@ ul{list-style:none;}
   align-items:center;
 }
 
-.hero-blob{position:absolute;border-radius:50%;opacity:.7;z-index:0;}
-.hero-blob-1{width:220px;height:220px;top:-80px;left:-60px;background:radial-gradient(circle,var(--pink) 0%,transparent 70%);}
-.hero-blob-2{width:240px;height:240px;bottom:-90px;right:-70px;background:radial-gradient(circle,var(--purple) 0%,transparent 70%);}
+.hero-blob{display:none;}
 
 .hero-content{
   position:relative;
