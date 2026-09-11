@@ -397,11 +397,11 @@ const DESIGN_GALLERY = {
   redonda_frutal: {
     label: "Torta redonda frutal",
     images: [
-      { src: "img/torta-redonda-frutal/torta-redonda-frutal.jpg", alt: "Torta redonda frutal 1" },
-      { src: "img/torta-redonda-frutal/torta-redonda-frutal2.jpg", alt: "Torta redonda frutal 2" },
-      { src: "img/torta-redonda-frutal/torta-redonda-frutal1.jpg", alt: "Torta redonda frutal 3" },
-      { src: "img/torta-redonda-frutal/torta-redonda-frutal3.jpg", alt: "Torta redonda frutal 4" },
-      { src: "img/torta-redonda-frutal/torta-redonda-frutal4.jpg", alt: "Torta redonda frutal 5" }
+      { src: "img/tortas-redondas/torta-redonda-frutal/torta-redonda-frutal.jpg", alt: "Torta redonda frutal 1" },
+      { src: "img/tortas-redondas/torta-redonda-frutal/torta-redonda-frutal2.jpg", alt: "Torta redonda frutal 2" },
+      { src: "img/tortas-redondas/torta-redonda-frutal/torta-redonda-frutal1.jpg", alt: "Torta redonda frutal 3" },
+      { src: "img/tortas-redondas/torta-redonda-frutal/torta-redonda-frutal3.jpg", alt: "Torta redonda frutal 4" },
+      { src: "img/tortas-redondas/torta-redonda-frutal/torta-redonda-frutal4.jpg", alt: "Torta redonda frutal 5" }
     ]
   },
   corazon: {
@@ -464,7 +464,7 @@ const DESIGN_GALLERY = {
   evento: {
     label: "Eventos",
     images: [
-      { src: "img/tortas-evento/torta-evento1.jpeg", alt: "Torta de evento 1" },
+      { src: "img/tortas-evento/torta-evento1..jpeg", alt: "Torta de evento 1" },
       { src: "img/tortas-evento/torta-evento2.jpeg", alt: "Torta de evento 2" },
       { src: "img/tortas-evento/torta-evento3.jpeg", alt: "Torta de evento 3" },
       { src: "img/tortas-evento/torta-evento4.jpeg", alt: "Torta de evento 4" }

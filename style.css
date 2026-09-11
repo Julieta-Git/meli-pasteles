@@ -45,7 +45,9 @@ body{
 }
 
 /* Dos manchas suaves y quietas (sin animación: más calmo y
-   más liviano en el celular) en vez del degradé cargado de antes. */
+   más liviano en el celular). Van en el body para que el
+   fondo se sienta continuo en toda la página, sin cortes
+   entre secciones. */
 body::before,
 body::after{
   content:"";
@@ -108,7 +110,8 @@ ul{list-style:none;}
 .logo-container{display:flex;align-items:center;gap:9px;min-width:0;}
 
 .logo-img{
-  width:120px;height:120px;flex-shrink:0;
+  width:120px;height:120px;
+  flex-shrink:0;
   object-fit:contain;
   padding:4px;
 }
@@ -215,19 +218,21 @@ ul{list-style:none;}
 
 /* =========================================================
    HERO
+   Más corto: sin botones, el contenido es solo eyebrow + título
+   + texto, así que no necesita tanto alto — antes quedaba un
+   espacio vacío abajo.
 ========================================================= */
 .hero{
   position:relative;
   overflow:hidden;
-  padding:44px 20px 56px;
+  padding:36px 20px 40px;
   display:flex;
   align-items:center;
-  min-height:min(560px,86vh);
 }
 
 .hero-blob{position:absolute;border-radius:50%;opacity:.7;z-index:0;}
-.hero-blob-1{width:260px;height:260px;top:-90px;left:-70px;background:radial-gradient(circle,var(--pink) 0%,transparent 70%);}
-.hero-blob-2{width:300px;height:300px;bottom:-120px;right:-90px;background:radial-gradient(circle,var(--purple) 0%,transparent 70%);}
+.hero-blob-1{width:220px;height:220px;top:-80px;left:-60px;background:radial-gradient(circle,var(--pink) 0%,transparent 70%);}
+.hero-blob-2{width:240px;height:240px;bottom:-90px;right:-70px;background:radial-gradient(circle,var(--purple) 0%,transparent 70%);}
 
 .hero-content{
   position:relative;
@@ -256,19 +261,19 @@ ul{list-style:none;}
 .hero h1{
   font-family:"Fraunces",serif;
   font-weight:600;
-  font-size:clamp(1.9rem,8vw,3rem);
+  font-size:clamp(1.7rem,7vw,2.6rem);
   line-height:1.15;
-  margin-bottom:16px;
+  margin-bottom:14px;
 }
 
 .hero p{
   color:var(--text-light);
-  font-size:.98rem;
+  font-size:.96rem;
   max-width:400px;
-  margin:0 auto 26px;
+  margin:0 auto;
 }
 
-.hero-buttons{display:flex;flex-direction:column;gap:12px;}
+.hero-buttons{display:flex;flex-direction:column;gap:12px;margin-top:22px;}
 
 .btn{
   display:flex;
@@ -309,7 +314,6 @@ ul{list-style:none;}
 
 /* =========================================================
    FOTOS — cover + esquinas redondeadas + sombra propia
-   (pensado para fotos reales, no depende de fondo transparente)
 ========================================================= */
 .photo-frame{
   position:relative;
@@ -391,18 +395,14 @@ ul{list-style:none;}
 }
 .swipe-dots span.active{background:white;transform:scale(1.4);}
 
-/* Tamaño "card": mini-galería dentro de una tarjeta del catálogo */
 .swipe-gallery--card{width:100%;height:100%;}
 .swipe-gallery--card .swipe-item{aspect-ratio:4/3.2;}
 
-/* Tamaño "modal": galería más grande en el detalle */
 .swipe-gallery--modal .swipe-item{aspect-ratio:4/3.2;}
 .swipe-gallery--modal{border-radius:var(--radius-md);overflow:hidden;margin-bottom:18px;}
 
 /* =========================================================
    CATÁLOGO
-   Tarjeta simplificada: foto(s), nombre, descripción corta,
-   precio. El resto (peso/diámetro/porciones) va en el modal.
 ========================================================= */
 .catalog-grid{display:grid;grid-template-columns:1fr;gap:22px;}
 
@@ -455,8 +455,10 @@ ul{list-style:none;}
 
 /* =========================================================
    CONFIGURADOR
+   Fondo transparente: usa el mismo fondo continuo del body,
+   sin recuadro de color propio (antes cortaba contra el resto).
 ========================================================= */
-.custom-section{padding:60px 18px 66px;background:rgba(246,241,251,.6);}
+.custom-section{padding:60px 18px 66px;}
 
 .customizer{
   max-width:620px;
@@ -716,5 +718,4 @@ footer small{color:#a99fac;font-size:.68rem;}
 ========================================================= */
 @media (min-width:1040px){
   .catalog-grid{grid-template-columns:repeat(3,1fr);}
-  .hero{min-height:600px;}
 }
