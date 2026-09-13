@@ -179,7 +179,7 @@ const PRODUCTS = [
       ["Relleno", "A elección — dulce de leche, chantilly, mousse y más"],
       ["Cobertura", "Chantilly (no trabajamos con fondant)"],
       ["Topper y moño", "Opcionales, sin cargo. Color del moño sujeto a disponibilidad"],
-      ["Con 2 rellenos", "~2.300 g — aprox. $44.000"]
+      ["Con 2 rellenos", "~2.300 g — aprox. $46.000"]
     ],
     whatsappMessage: "Hola Meli! Quería consultar por una torta redonda de 18 cm, aproximadamente 1,2 kg y 20 porciones."
   },
@@ -493,7 +493,7 @@ const SHAPES = [
 
 const FILLING_COUNTS = [
   { value: 1, label: "1 relleno", extra: 0, weightHint: "~1,2 kg" },
-  { value: 2, label: "2 rellenos", extra: 21000, weightHint: "~2,3 kg" }
+  { value: 2, label: "2 rellenos", extra: 23000, weightHint: "~2,3 kg" }
 ];
 
 const SPONGE_OPTIONS = ["Vainilla", "Chocolate"];
