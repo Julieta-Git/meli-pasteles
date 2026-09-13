@@ -290,7 +290,7 @@ const PRODUCTS = [
       ["Relleno", "A elección — dulce de leche, chantilly, mousse y más"],
       ["Cobertura", "Chantilly (no trabajamos con fondant)"],
       ["Topper y moño", "Opcionales, sin cargo. Color del moño sujeto a disponibilidad"],
-      ["Con 2 rellenos", "~2.300 g — aprox. $45.000"]
+      ["Con 2 rellenos", "~2.300 g — aprox. $46.000"]
     ],
     whatsappMessage: "Hola Meli! Quería consultar por una torta club."
   },
